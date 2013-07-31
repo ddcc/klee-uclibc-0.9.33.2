@@ -10,7 +10,8 @@ subdirs += libc/stdlib/malloc-standard
 STDLIB_MALLOC_STANDARD_DIR := $(top_srcdir)libc/stdlib/malloc-standard
 STDLIB_MALLOC_STANDARD_OUT := $(top_builddir)libc/stdlib/malloc-standard
 
-CSRC-y := $(notdir $(wildcard $(STDLIB_MALLOC_STANDARD_DIR)/*.c))
+# DWD
+CSRC-y := #$(notdir $(wildcard $(STDLIB_MALLOC_STANDARD_DIR)/*.c))
 
 STDLIB_MALLOC_STANDARD_SRC := $(patsubst %.c,$(STDLIB_MALLOC_STANDARD_DIR)/%.c,$(CSRC-y))
 STDLIB_MALLOC_STANDARD_OBJ := $(patsubst %.c,$(STDLIB_MALLOC_STANDARD_OUT)/%.o,$(CSRC-y))

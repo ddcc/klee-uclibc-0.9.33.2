@@ -58,6 +58,9 @@ uintptr_t __guard attribute_relro;
 #  endif
 # endif
 
+/* removes a warning */
+#define __UCLIBC_FORMAT_SHARED_FLAT__
+
 /*
  * Needed to initialize _dl_phdr when statically linked
  */

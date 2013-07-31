@@ -575,7 +575,11 @@ typedef unsigned char __uchar_t;
 #ifdef __UCLIBC_HAS_WCHAR__
 #define GETC(SC) (SC)->sc_getc((SC))
 #else  /* __UCLIBC_HAS_WCHAR__ */
-#define GETC(SC) getc_unlocked((SC)->fp)
+
+/*DWD*/
+//#define GETC(SC) getc_unlocked((SC)->fp)
+#define GETC(SC) __fgetc_unlocked((SC)->fp)
+
 #endif /* __UCLIBC_HAS_WCHAR__ */
 #endif
 
@@ -942,7 +946,9 @@ int attribute_hidden __psfs_parse_spec(register psfs_t *psfs)
 #ifdef L_vfscanf
 static int sc_getc(register struct scan_cookie *sc)
 {
-	return (getc_unlocked)(sc->fp);	/* Disable the macro. */
+	/*DWD*/
+	//return (getc_unlocked)(sc->fp);	/* Disable the macro. */
+	return (__fgetc_unlocked)(sc->fp);	/* Disable the macro. */
 }
 
 static int scan_getwc(register struct scan_cookie *sc)
